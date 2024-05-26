@@ -26,7 +26,10 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .build()?;
 
     let text_part = ChatCompletionRequestMessageContentPartTextArgs::default()
-        .text("Based on the image, can you tell me the times for Fajr adhan and iqamah, Zuhr adhan and iqamah, Asr adhan and iqamah, Maghrib adhan and iqamah, and Isha adhan and iqamah? Please output each on a separate line with just the label and the time and nothing else. Do not say anything else. Stop and think it through")
+        .text(r#"
+        Based on the image, can you tell me today's times for Fajr adhan and iqamah, Zuhr adhan and iqamah, Asr adhan and iqamah, Maghrib adhan and iqamah, and Isha adhan and iqamah?
+        Please format the output as a JSON object, where the top level keys are prayer names mapped to objects with type and time key-value pairs. Do not say anything else. 
+        Stop and think it through"#)
         .build()?;
 
     let request = CreateChatCompletionRequestArgs::default()
