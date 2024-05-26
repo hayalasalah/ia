@@ -3,7 +3,7 @@
 A GPT-4o powered prayer time scraper
 
 ## How it works
-It takes a screenshot of a mosque webpage (after optionally scrolling and/or sleeping) and then passes the screenshot image to the ChatGPT vision API to extract the data
+It takes a screenshot of a mosque webpage (after optionally scrolling and/or sleeping) and then passes the screenshot image to the GPT-4o vision API to extract the data
 
 ## Pre-reqs
 1. Firefox should be installed
