@@ -28,13 +28,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let text_part = ChatCompletionRequestMessageContentPartTextArgs::default()
         .text(r#"
         Based on the image, can you tell me today's times for Fajr adhan and iqamah, Zuhr adhan and iqamah, Asr adhan and iqamah, Maghrib adhan and iqamah, and Isha adhan and iqamah?
-        Please format the output as a JSON object, where the top level keys are prayer names mapped to objects with type and time key-value pairs. Do not say anything else. 
-        Stop and think it through"#)
+        Please format the output as a JSON object, where the top level keys are prayer names mapped to objects with type and time key-value pairs. Do not say anything else. Do not include any formatting. All the output should be lowercase. Include am and pm on all the times.  
+        Stop and think it through and ONLY BASE IT ON THE IMAGE. If there's no times in the image then say so"#)
         .build()?;
 
     let request = CreateChatCompletionRequestArgs::default()
         .model("gpt-4o")
-        .max_tokens(1000_u16)
+        .max_tokens(2000_u16)
         .temperature(0.2)
         .messages([ChatCompletionRequestUserMessageArgs::default()
             .content(vec![img_part.into(), text_part.into()])
